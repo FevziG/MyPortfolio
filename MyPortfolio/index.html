@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fevzi Güler | Portfolyo</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+<body>
+  <header>
+    <img src="images/profil.jpg" alt="Fevzi Güler" class="profile-img">
+    <h1>Fevzi Güler</h1>
+    <p>Bilgisayar Mühendisi | Full-Stack Web Developer</p>
+  </header>
+
+  <section id="about">
+    <h2>Hakkımda</h2>
+    <p>
+      Manisa Celal Bayar Üniversitesi Bilgisayar Mühendisliği (İngilizce) bölümünden 3.30 GANO ile mezun oldum. 
+      Eğitimim süresince yalnızca müfredatla yetinmeyip Udemy, YouTube ve W3Schools gibi platformlardan yararlanarak yazılım becerilerimi geliştirdim. 
+      Özellikle ASP.NET C# MVC mimarisi üzerinde çalışarak full-stack geliştirme konusunda deneyim kazandım. 
+      Öğrenmeye açık, ekip çalışmasına yatkın ve iletişimi güçlü bir mühendis olarak teknolojiyi faydalı çözümlere dönüştürmeyi hedefliyorum.
+    </p>
+  </section>
+
+  <section id="education">
+    <h2>Eğitim</h2>
+    <ul>
+      <li>Manisa Celal Bayar Üniversitesi – Bilgisayar Mühendisliği (İngilizce), 2021 – 2025</li>
+      <li>Manisa Celal Bayar Üniversitesi – İngilizce Hazırlık, 2020 - 2021</li>
+      <li>Antalya Lisesi (Anadolu), 2016 – 2020</li>
+    </ul>
+  </section>
+
+  <section id="experience">
+    <h2>Deneyim</h2>
+    <ul>
+      <li><b>Talya Bilişim Ltd. Şti.</b> – Stajyer (4 ay)<br>
+        ElektraWeb yazılımı üzerinde Frontend Developer ve Test Developer rollerinde görev aldım.
+      </li>
+      <li><b>Softalya Yazılım Ltd. Şti.</b> – Stajyer (20 iş günü)<br>
+        Web Developer olarak çalışarak iş hayatında deneyim kazandım.
+      </li>
+    </ul>
+  </section>
+
+  <section id="projects">
+    <h2>Projelerim</h2>
+    <ul id="project-list"></ul>
+  </section>
+
+  <script>
+    fetch('https://api.github.com/users/FevziG/repos')
+    .then(response => response.json())
+    .then(data => {
+    const projectList = document.getElementById('project-list');
+    // Fork olmayanları filtrele
+    const myProjects = data.filter(repo => !repo.fork);
+    myProjects.forEach(repo => {
+      const li = document.createElement('li');
+      li.innerHTML = `<a href="${repo.html_url}" target="_blank">${repo.name}</a> - ${repo.description || ''}`;
+      projectList.appendChild(li);
+    });
+  });
+  </script>
+
+  <section id="skills">
+    <h2>Beceriler</h2>
+    <p><b>Diller:</b> C#, Java, Python, JavaScript, SQL</p>
+    <p><b>Frameworkler:</b> ASP.NET Core, React</p>
+    <p><b>Yetkinlikler:</b> Takım Oyuncusu, Analitik Düşünme, İkna Becerisi</p>
+  </section>
+
+  <section id="contact">
+    <h2>İletişim</h2>
+    <form action="https://formspree.io/f/xovlovqb" method="POST">
+    <label for="name">Adınız:</label>
+    <input type="text" name="name" id="name" placeholder="Adınızı girin" required>
+
+    <label for="email">E-posta:</label>
+    <input type="email" name="email" id="email" placeholder="E-posta adresinizi girin" required>
+
+    <label for="message">Mesajınız:</label>
+    <textarea name="message" id="message" placeholder="Mesajınızı yazın" required></textarea>
+
+    <button type="submit">Gönder</button>
+  </form>
+
+    <p>📞 0546 897 74 14</p>
+    <p>✉️ <a href="mailto:fvz_glr@hotmail.com">fvz_glr@hotmail.com</a></p>
+    <p>📍 Antalya / Kepez</p>
+
+
+    <div class="social-icons">
+    <a href="https://www.linkedin.com/in/kendi-linkedin-adresin" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="https://www.instagram.com/kendi-instagram-adresin" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://github.com/kendi-github-adresin" target="_blank"><i class="fab fa-github"></i></a>
+  </div>
+</section>
