@@ -60,7 +60,7 @@
     const myProjects = data.filter(repo => !repo.fork);
     myProjects.forEach(repo => {
       const li = document.createElement('li');
-      li.innerHTML = `<a href="${repo.html_url}" target="_blank">${repo.name}</a> - ${repo.description || ''}`;
+      li.innerHTML = `<a href="${repo.html_url}" target="_blank">${repo.name}</a>`;
       projectList.appendChild(li);
     });
   });
